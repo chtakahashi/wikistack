@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const { db } = require('./models')
 const bodyParser = require('body-parser')
 const {
   addPage,
@@ -9,6 +10,11 @@ const {
   userPages,
   wikiPage
 } = require('./views/index')
+
+db.authenticate()
+  .then(() => {
+    console.log('connected to the database');
+  })
 
 const app = express()
 
