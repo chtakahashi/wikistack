@@ -1,6 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 const { db, Page, User } = require("./models");
+const users = require('./routes/users')
+const wiki = require('./routes/wiki')
 const bodyParser = require("body-parser");
 const {
   addPage,
@@ -24,6 +26,9 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send(main(""));
 });
+
+app.use('/wiki', require('./routes/wiki'));
+
 
 const sync = async () => {
   try {
