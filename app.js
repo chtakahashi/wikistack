@@ -24,11 +24,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
+  res.redirect('/wiki')
+})
+
+app.get("/", (req, res) => {
   res.send(main(""));
 });
 
 app.use('/wiki', require('./routes/wiki'));
-
 
 const sync = async () => {
   try {
