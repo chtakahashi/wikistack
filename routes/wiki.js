@@ -9,8 +9,6 @@ router.post('/', async (req, res, next) => {
       title: req.body.title,
       content: req.body.content
     });
-    console.log(title)
-    console.log(content)
 
     // make sure we only redirect *after* our save is complete! Don't forget to `await` the previous step. `create` returns a Promise.
     res.redirect('/');
